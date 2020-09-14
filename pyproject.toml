@@ -5,7 +5,7 @@ description = "See videos and pictures of animals"
 authors = ["Pricilla Patricia de Aragao <pricillapatricia@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "3.8.3"
 flask = "^1.1.2"
 gunicorn = "^20.0.4"
 
