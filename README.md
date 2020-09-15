@@ -1,1 +1,1 @@
-# AnimalFlix - Backend
+# Animal Pics and Videos - Backend

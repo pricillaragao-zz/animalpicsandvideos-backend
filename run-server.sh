@@ -2,8 +2,8 @@
 
 if ! command -v poetry &> /dev/null
 then
-    gunicorn "animalflix:create_app()"
+    gunicorn "animalpicsandvideos:create_app()"
     exit
 else
-    poetry run gunicorn "animalflix:create_app()"
+    poetry run gunicorn "animalpicsandvideos:create_app()"
 fi

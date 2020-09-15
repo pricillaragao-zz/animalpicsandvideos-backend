@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "animalflix"
+name = "animalpicsandvideos"
 version = "0.1.0"
 description = "See videos and pictures of animals"
 authors = ["Pricilla Patricia de Aragao <pricillapatricia@gmail.com>"]

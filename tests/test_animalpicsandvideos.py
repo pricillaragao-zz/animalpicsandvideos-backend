@@ -1,6 +1,6 @@
 import json
-from animalflix import __version__, create_app, AnimalFlixJSONEncoder
-from animalflix.animals import Animal, Species
+from animalpicsandvideos import __version__, create_app, animalpicsandvideosJSONEncoder
+from animalpicsandvideos.animals import Animal, Species
 
 
 app = create_app()
@@ -14,7 +14,7 @@ def test_get_animals():
     with app.test_client() as test_client:
         # Arrange
         dog = Animal(0, Species.DOG)
-        expected_result = json.dumps([dog], cls=AnimalFlixJSONEncoder)
+        expected_result = json.dumps([dog], cls=animalpicsandvideosJSONEncoder)
 
         # Act
         response = test_client.get("/api/v1/animals", follow_redirects=True)
