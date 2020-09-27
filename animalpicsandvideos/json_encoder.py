@@ -5,5 +5,5 @@ from animalpicsandvideos.animals import Animal
 class animalpicsandvideosJSONEncoder(JSONEncoder):
     def default(self, o):
         if isinstance(o, Animal):
-            return {"id": o.id, "species": o.species.value}
+            return {"id": o.id, "species": o.species.value, "img_url": o.img_url}
         return super(animalpicsandvideosJSONEncoder, self).default(o)
