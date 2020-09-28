@@ -1,6 +1,6 @@
 import json
 import requests
-from animalpicsandvideos import __version__, create_app, animalpicsandvideosJSONEncoder
+from animalpicsandvideos import __version__, create_app
 
 
 app = create_app()
@@ -16,10 +16,13 @@ def test_get_animals():
         response = test_client.get("/api/v1/animals", follow_redirects=True)
 
         # Assert
-        data = json.loads(response.data.decode())
+        animals = json.loads(response.data.decode())
 
-        dog = data[0]
+        for animal in animals:
+            assert animal["id"]
+            assert animal["species"]
 
-        assert dog["id"]
-        assert dog["species"] == "dog"
-        assert requests.get(dog["img_url"]).status_code == 200
+            img_url = animal["img_url"]
+
+            assert img_url
+            assert requests.get(img_url).status_code == 200

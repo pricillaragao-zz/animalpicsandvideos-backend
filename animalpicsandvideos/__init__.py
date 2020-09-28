@@ -3,12 +3,12 @@ __version__ = "0.1.0"
 
 import animalpicsandvideos.animals
 from flask import Flask
-from .json_encoder import animalpicsandvideosJSONEncoder
+from .json_encoder import AnimalPicsAndVideosJSONEncoder
 
 
 def create_app() -> Flask:
     app = Flask(__name__)
-    app.json_encoder = animalpicsandvideosJSONEncoder
+    app.json_encoder = AnimalPicsAndVideosJSONEncoder
 
     app.register_blueprint(
         blueprint=animalpicsandvideos.animals.api_v1, url_prefix="/api/v1/animals"

@@ -1,11 +1,20 @@
+import os
+import psycopg2
 from flask import jsonify
-from animalpicsandvideos.unsplash import UnsplashService
+from animalpicsandvideos.unsplash import UnsplashService, UnsplashRepository
 from . import api_v1
 from .repository import AnimalsRepository
 from .service import AnimalsService
 
+DATABASE_URL = os.environ["DATABASE_URL"]
+
+conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+
+unsplash_repository = UnsplashRepository(conn)
+
 animals_service = AnimalsService(
-    repository=AnimalsRepository(), unsplash_service=UnsplashService()
+    repository=AnimalsRepository(conn),
+    unsplash_service=UnsplashService(unsplash_repository),
 )
 
 

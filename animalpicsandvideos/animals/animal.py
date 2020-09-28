@@ -1,8 +1,5 @@
-from .species import Species
-
-
 class Animal:
-    def __init__(self, id_: str, species: Species, img_url: str = None):
+    def __init__(self, id_: str, species: str, img_url: str = None):
         self._id = id_
         self._species = species
         self._img_url = img_url

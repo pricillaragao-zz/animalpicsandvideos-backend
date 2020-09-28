@@ -1,11 +1,21 @@
+from typing import List
 from .animal import Animal
-from .species import Species
 
 
 class AnimalsRepository:
-    @staticmethod
-    def find_animal(id_: str) -> Animal:
-        if id_ == "0":
-            return Animal(id_, Species.DOG)
-        else:
-            raise ValueError(f"id {id_} not found")
+    def __init__(self, conn):
+        self.table_name = "animals"
+        self.conn = conn
+
+    def find_animal(self, id_: str) -> Animal:
+        cur = self.conn.cursor()
+        cur.execute(f"SELECT id, species FROM {self.table_name} WHERE id = %s;", (id_,))
+        result = cur.fetchone()
+        print(result)
+        return Animal(result[0], result[1])
+
+    def list_animals(self) -> List[Animal]:
+        cur = self.conn.cursor()
+        cur.execute(f"SELECT id, species FROM {self.table_name};")
+        results = cur.fetchall()
+        return [Animal(result[0], result[1]) for result in results]
